@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,8 @@
 		FA5EF3EC23DD5246006A9B5A /* StaffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5EF3EB23DD5246006A9B5A /* StaffTableViewCell.swift */; };
 		FA5EF3EE23DD52D8006A9B5A /* WorkersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5EF3ED23DD52D8006A9B5A /* WorkersModel.swift */; };
 		FA5EF3F023DD53D3006A9B5A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA5EF3EF23DD53D3006A9B5A /* .gitignore */; };
+		FA5EF3F223DD7BB6006A9B5A /* NewWorkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5EF3F123DD7BB6006A9B5A /* NewWorkerViewController.swift */; };
+		FA5EF3F523DD86B0006A9B5A /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5EF3F423DD86B0006A9B5A /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		FA5EF3EB23DD5246006A9B5A /* StaffTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffTableViewCell.swift; sourceTree = "<group>"; };
 		FA5EF3ED23DD52D8006A9B5A /* WorkersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkersModel.swift; sourceTree = "<group>"; };
 		FA5EF3EF23DD53D3006A9B5A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		FA5EF3F123DD7BB6006A9B5A /* NewWorkerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkerViewController.swift; sourceTree = "<group>"; };
+		FA5EF3F423DD86B0006A9B5A /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +58,6 @@
 				4CD577F9F24551842A9F3B45 /* Pods-testTaskZennex.debug.xcconfig */,
 				C48CE78BBD6871D6358DF534 /* Pods-testTaskZennex.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -90,6 +93,7 @@
 		FA5EF3E523DD502C006A9B5A /* Staff */ = {
 			isa = PBXGroup;
 			children = (
+				FA5EF3F323DD869F006A9B5A /* Helpers */,
 				FA5EF3EA23DD508F006A9B5A /* Models */,
 				FA5EF3E923DD5085006A9B5A /* View */,
 				FA5EF3E823DD5079006A9B5A /* Controllers */,
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5EF3D523DD500F006A9B5A /* MainViewController.swift */,
+				FA5EF3F123DD7BB6006A9B5A /* NewWorkerViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -139,6 +144,14 @@
 				FA5EF3ED23DD52D8006A9B5A /* WorkersModel.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		FA5EF3F323DD869F006A9B5A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA5EF3F423DD86B0006A9B5A /* StorageManager.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		FE6FDBE49231A13875E79C8A /* Frameworks */ = {
@@ -268,8 +281,10 @@
 				FA5EF3D623DD500F006A9B5A /* MainViewController.swift in Sources */,
 				FA5EF3D223DD500F006A9B5A /* AppDelegate.swift in Sources */,
 				FA5EF3EC23DD5246006A9B5A /* StaffTableViewCell.swift in Sources */,
+				FA5EF3F523DD86B0006A9B5A /* StorageManager.swift in Sources */,
 				FA5EF3D423DD500F006A9B5A /* SceneDelegate.swift in Sources */,
 				FA5EF3EE23DD52D8006A9B5A /* WorkersModel.swift in Sources */,
+				FA5EF3F223DD7BB6006A9B5A /* NewWorkerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
