@@ -10,20 +10,20 @@ import RealmSwift
 
 class Workers: Object {
     
-    let type = List<TypeWorker>()
+    @objc dynamic var type: String? = nil
     @objc dynamic var name = ""
     @objc dynamic var surname = ""
     @objc dynamic var patronymic = ""
     @objc dynamic var salary = 0
-    @objc dynamic var businessHours: Boss? = nil
+    @objc dynamic var businessHours: String? = nil
     @objc dynamic var lunchTime: String? = nil
-    @objc dynamic var accountant: AccountantType? = nil
-    dynamic var workplace = RealmOptional<Int>()
+    @objc dynamic var accountant: String? = nil
+    @objc dynamic var workplace: String? = nil
 
 
-    convenience init(type: TypeWorker, name: String, surname: String, patronymic: String, salary: Int, businessHours: Boss, lunchTime: String?, accountant: AccountantType?, workplace: Int?) {
+    convenience init(type: String?, name: String, surname: String, patronymic: String, salary: Int, businessHours: String?, lunchTime: String?, accountant: String?, workplace: String?) {
         self.init()
-        self.type.append(type)
+        self.type = type
         self.name = name
         self.surname = surname
         self.patronymic = patronymic
@@ -31,38 +31,38 @@ class Workers: Object {
         self.businessHours = businessHours
         self.lunchTime = lunchTime
         self.accountant = accountant
-        self.workplace.value = workplace
+        self.workplace = workplace
         
     }
 }
 
-class TypeWorker: Object {
-    
-    @objc dynamic var type: String? = nil
-    
-    convenience init(type: String) {
-        self.init()
-        self.type = type
-    }
-
-}
-
-class Boss: Object {
-    @objc dynamic var bussinesHouse = ""
-    
-    convenience init(bussinesHouse: String) {
-        self.init()
-        self.bussinesHouse = bussinesHouse
-    }
-}
-
-class AccountantType: Object {
-    
-    @objc dynamic var accountantType: String? = nil
-    
-    convenience init(accountantType: String) {
-        self.init()
-        self.accountantType = accountantType
-    }
-    
-}
+//class TypeWorker: Object {
+//
+//    @objc dynamic var type: String? = nil
+//
+//    convenience init(type: String) {
+//        self.init()
+//        self.type = type
+//    }
+//
+//}
+//
+//class Boss: Object {
+//    @objc dynamic var bussinesHouse = ""
+//
+//    convenience init(bussinesHouse: String) {
+//        self.init()
+//        self.bussinesHouse = bussinesHouse
+//    }
+//}
+//
+//class AccountantType: Object {
+//
+//    @objc dynamic var accountantType: String? = nil
+//
+//    convenience init(accountantType: String) {
+//        self.init()
+//        self.accountantType = accountantType
+//    }
+//
+//}

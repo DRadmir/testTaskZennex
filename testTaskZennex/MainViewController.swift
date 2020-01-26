@@ -7,21 +7,56 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    let workers = try! Realm().objects(Workers.self).sorted(by: (["type", "name"]))
+    var sectionNames: [String] {
+        return Set(workers.value(forKeyPath: "type") as! [String]).sorted()
+    }
+    
+    
+//    private var workersSectionTitles: [String] {
+//        return Set(workers.value(forKeyPath: "type")
+//    }
+    
 
+//    private var workers: Results<Workers>!
+
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+//        workers = realm.objects(Workers.self)
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionNames.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionNames[section]
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return workers.filter("type == %@", sectionNames[section]).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StaffTableViewCell
+        
+        let info = workers.filter("type == %@", sectionNames[indexPath.section])[indexPath.row]
+        cell.getBossData(data: info)
+        
+//        cell.fioLabel?.text = workers.filter("name == %@", sectionNames[indexPath.section])[indexPath.row].name
         
         return cell
     }

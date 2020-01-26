@@ -11,7 +11,8 @@ import UIKit
 class NewWorkerViewController: UIViewController {
     
     var currentWorkers: Workers!
-    var type: TypeWorker!
+    private var type = "boss"
+    private var typeAccountant = "salary"
     
     @IBOutlet weak var workersSegmentedControl: UISegmentedControl!
     @IBOutlet weak var typeAccountantSegmentedControl: UISegmentedControl!
@@ -36,6 +37,7 @@ class NewWorkerViewController: UIViewController {
     }
     
     @IBAction func saveWorkersTapped(_ sender: Any) {
+        saveWorkers()
     }
 
     @IBAction func workersSegmentedValueChanged(_ sender: Any) {
@@ -53,53 +55,148 @@ class NewWorkerViewController: UIViewController {
     }
     
     @IBAction func typeAccountantSegmentedControlValueChanged(_ sender: UISegmentedControl) {
+        switch typeAccountantSegmentedControl.selectedSegmentIndex {
+        case 0:
+            self.typeAccountant = "salary"
+        case 1:
+            self.typeAccountant = "accounting"
+        default:
+            break
+        }
     }
     
-    func saveWorkers() {
+    private func saveWorkers() {
         
         switch workersSegmentedControl.selectedSegmentIndex {
         case 0:
-            let newWorker = Workers(type: type,
-                                    name: nameTF.text!,
-                                    surname: surnameTF.text!,
-                                    patronymic: patronymicTF.text!,
-                                    salary: Int(salaryTF.text!)!,
-                                    businessHours: <#T##Boss#>,
-                                    lunchTime: nil,
-                                    accountant: nil,
-                                    workplace: nil)
+            if nameTF.text == "" ||
+                surnameTF.text == "" ||
+                patronymicTF.text == "" ||
+                salaryTF.text == "" ||
+                bussinessHoursTF?.text == "" {
+                
+                showAlert(title: "Warning", message: "all fields must be filled")
+                
+            } else {
+                saveWorker(type: type,
+                           name: nameTF.text!,
+                           surname: surnameTF.text!,
+                           patronymic: patronymicTF.text!,
+                           salary: Int(salaryTF.text!)!,
+                           businessHuors: bussinessHoursTF.text!,
+                           lunchTime: nil,
+                           accountant: nil,
+                           workplace: nil)
+            }
+            
         case 1:
-            <#code#>
+            if nameTF.text == "" ||
+                surnameTF.text == "" ||
+                patronymicTF.text == "" ||
+                salaryTF.text == "" ||
+                lunchTimeTF.text == "" ||
+                numberWorkplaceTF.text == "" {
+                
+                showAlert(title: "Warning", message: "all fields must be filled")
+                
+            } else {
+                saveWorker(type: type,
+                           name: nameTF.text!,
+                           surname: surnameTF.text!,
+                           patronymic: patronymicTF.text!,
+                           salary: Int(salaryTF.text!)!,
+                           businessHuors: nil,
+                           lunchTime: lunchTimeTF.text!,
+                           accountant: nil,
+                           workplace: numberWorkplaceTF.text!)
+            }
+            
         case 2:
-            <#code#>
+            if nameTF.text == "" ||
+                surnameTF.text == "" ||
+                patronymicTF.text == "" ||
+                salaryTF.text == "" ||
+                lunchTimeTF.text == "" ||
+                numberWorkplaceTF.text == "" {
+                
+                showAlert(title: "Warning", message: "all fields must be filled")
+                
+            } else {
+                saveWorker(type: type,
+                           name: nameTF.text!,
+                           surname: surnameTF.text!,
+                           patronymic: patronymicTF.text!,
+                           salary: Int(salaryTF.text!)!,
+                           businessHuors: nil,
+                           lunchTime: lunchTimeTF.text!,
+                           accountant: typeAccountant,
+                           workplace: numberWorkplaceTF.text!)
+            }
         default:
-            <#code#>
+            break
         }
+        
+        self.dismiss(animated: true, completion: nil)
         
     }
     
-    func bossInterfaceSetting() {
+    private func saveWorker(type: String, name: String, surname: String, patronymic: String, salary: Int, businessHuors: String?, lunchTime: String?, accountant: String?, workplace: String?) {
+        let newWorker = Workers(type: type,
+                                name: name,
+                                surname: surname,
+                                patronymic: patronymic,
+                                salary: salary,
+                                businessHours: businessHuors,
+                                lunchTime: lunchTime,
+                                accountant: accountant,
+                                workplace: workplace)
+        if self.currentWorkers != nil {
+            try! realm.write {
+                currentWorkers.type = newWorker.type
+                currentWorkers.name = newWorker.name
+                currentWorkers.surname = newWorker.surname
+                currentWorkers.patronymic = newWorker.patronymic
+                currentWorkers.salary = newWorker.salary
+                currentWorkers.businessHours = newWorker.businessHours
+                currentWorkers.lunchTime = newWorker.lunchTime
+                currentWorkers.accountant = newWorker.accountant
+                currentWorkers.workplace = newWorker.workplace
+            }
+        } else {
+            StorageManager.saveObject(newWorker)
+        }
+    }
+    
+    private func bossInterfaceSetting() {
         typeAccountantSegmentedControl.isHidden = true
         numberWorkplaceStackView.isHidden = true
         bussinessHoursStackView.isHidden = false
         lunchTimeStackView.isHidden = true
-        self.type = TypeWorker(type: "boss")
+        self.type = "boss"
     }
     
-    func staffInterfaceSetting() {
+    private func staffInterfaceSetting() {
         typeAccountantSegmentedControl.isHidden = true
         numberWorkplaceStackView.isHidden = false
         bussinessHoursStackView.isHidden = true
         lunchTimeStackView.isHidden = false
-        self.type = TypeWorker(type: "staff")
+        self.type = "staff"
     }
     
-    func accountantInterfaceSetting() {
+    private func accountantInterfaceSetting() {
         typeAccountantSegmentedControl.isHidden = false
         numberWorkplaceStackView.isHidden = false
         bussinessHoursStackView.isHidden = true
         lunchTimeStackView.isHidden = false
-        self.type = TypeWorker(type: "accountant")
+        self.type = "accountant"
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     /*
