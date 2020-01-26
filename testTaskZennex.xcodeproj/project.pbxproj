@@ -7,23 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55BBD99F62B54F669568FAD4 /* Pods_testTaskZennex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C5826BDBDC64C035093D23 /* Pods_testTaskZennex.framework */; };
 		FA5EF3D223DD500F006A9B5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5EF3D123DD500F006A9B5A /* AppDelegate.swift */; };
 		FA5EF3D423DD500F006A9B5A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5EF3D323DD500F006A9B5A /* SceneDelegate.swift */; };
-		FA5EF3D623DD500F006A9B5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5EF3D523DD500F006A9B5A /* ViewController.swift */; };
+		FA5EF3D623DD500F006A9B5A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5EF3D523DD500F006A9B5A /* MainViewController.swift */; };
 		FA5EF3D923DD500F006A9B5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5EF3D723DD500F006A9B5A /* Main.storyboard */; };
 		FA5EF3DB23DD5012006A9B5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5EF3DA23DD5012006A9B5A /* Assets.xcassets */; };
 		FA5EF3DE23DD5012006A9B5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5EF3DC23DD5012006A9B5A /* LaunchScreen.storyboard */; };
+		FA5EF3EC23DD5246006A9B5A /* StaffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5EF3EB23DD5246006A9B5A /* StaffTableViewCell.swift */; };
+		FA5EF3EE23DD52D8006A9B5A /* WorkersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5EF3ED23DD52D8006A9B5A /* WorkersModel.swift */; };
+		FA5EF3F023DD53D3006A9B5A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA5EF3EF23DD53D3006A9B5A /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CD577F9F24551842A9F3B45 /* Pods-testTaskZennex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testTaskZennex.debug.xcconfig"; path = "Target Support Files/Pods-testTaskZennex/Pods-testTaskZennex.debug.xcconfig"; sourceTree = "<group>"; };
+		C48CE78BBD6871D6358DF534 /* Pods-testTaskZennex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testTaskZennex.release.xcconfig"; path = "Target Support Files/Pods-testTaskZennex/Pods-testTaskZennex.release.xcconfig"; sourceTree = "<group>"; };
+		F7C5826BDBDC64C035093D23 /* Pods_testTaskZennex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testTaskZennex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5EF3CE23DD500F006A9B5A /* testTaskZennex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testTaskZennex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5EF3D123DD500F006A9B5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA5EF3D323DD500F006A9B5A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FA5EF3D523DD500F006A9B5A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA5EF3D523DD500F006A9B5A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FA5EF3D823DD500F006A9B5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA5EF3DA23DD5012006A9B5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA5EF3DD23DD5012006A9B5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA5EF3DF23DD5012006A9B5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA5EF3EB23DD5246006A9B5A /* StaffTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffTableViewCell.swift; sourceTree = "<group>"; };
+		FA5EF3ED23DD52D8006A9B5A /* WorkersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkersModel.swift; sourceTree = "<group>"; };
+		FA5EF3EF23DD53D3006A9B5A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +41,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55BBD99F62B54F669568FAD4 /* Pods_testTaskZennex.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9453B7DE8DAE00708E62EFC7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4CD577F9F24551842A9F3B45 /* Pods-testTaskZennex.debug.xcconfig */,
+				C48CE78BBD6871D6358DF534 /* Pods-testTaskZennex.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FA5EF3C523DD500F006A9B5A = {
 			isa = PBXGroup;
 			children = (
 				FA5EF3D023DD500F006A9B5A /* testTaskZennex */,
 				FA5EF3CF23DD500F006A9B5A /* Products */,
+				9453B7DE8DAE00708E62EFC7 /* Pods */,
+				FE6FDBE49231A13875E79C8A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +79,74 @@
 		FA5EF3D023DD500F006A9B5A /* testTaskZennex */ = {
 			isa = PBXGroup;
 			children = (
+				FA5EF3E523DD502C006A9B5A /* Staff */,
+				FA5EF3E623DD5057006A9B5A /* SuppotrFiles */,
+				FA5EF3E723DD506A006A9B5A /* iBulder */,
+				FA5EF3EF23DD53D3006A9B5A /* .gitignore */,
+			);
+			path = testTaskZennex;
+			sourceTree = "<group>";
+		};
+		FA5EF3E523DD502C006A9B5A /* Staff */ = {
+			isa = PBXGroup;
+			children = (
+				FA5EF3EA23DD508F006A9B5A /* Models */,
+				FA5EF3E923DD5085006A9B5A /* View */,
+				FA5EF3E823DD5079006A9B5A /* Controllers */,
+			);
+			name = Staff;
+			sourceTree = "<group>";
+		};
+		FA5EF3E623DD5057006A9B5A /* SuppotrFiles */ = {
+			isa = PBXGroup;
+			children = (
 				FA5EF3D123DD500F006A9B5A /* AppDelegate.swift */,
 				FA5EF3D323DD500F006A9B5A /* SceneDelegate.swift */,
-				FA5EF3D523DD500F006A9B5A /* ViewController.swift */,
+				FA5EF3DF23DD5012006A9B5A /* Info.plist */,
+			);
+			name = SuppotrFiles;
+			sourceTree = "<group>";
+		};
+		FA5EF3E723DD506A006A9B5A /* iBulder */ = {
+			isa = PBXGroup;
+			children = (
 				FA5EF3D723DD500F006A9B5A /* Main.storyboard */,
 				FA5EF3DA23DD5012006A9B5A /* Assets.xcassets */,
 				FA5EF3DC23DD5012006A9B5A /* LaunchScreen.storyboard */,
-				FA5EF3DF23DD5012006A9B5A /* Info.plist */,
 			);
-			path = testTaskZennex;
+			name = iBulder;
+			sourceTree = "<group>";
+		};
+		FA5EF3E823DD5079006A9B5A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA5EF3D523DD500F006A9B5A /* MainViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		FA5EF3E923DD5085006A9B5A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA5EF3EB23DD5246006A9B5A /* StaffTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA5EF3EA23DD508F006A9B5A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA5EF3ED23DD52D8006A9B5A /* WorkersModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		FE6FDBE49231A13875E79C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7C5826BDBDC64C035093D23 /* Pods_testTaskZennex.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +156,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA5EF3E223DD5012006A9B5A /* Build configuration list for PBXNativeTarget "testTaskZennex" */;
 			buildPhases = (
+				F4AD0850BBC45BF8DEC70341 /* [CP] Check Pods Manifest.lock */,
 				FA5EF3CA23DD500F006A9B5A /* Sources */,
 				FA5EF3CB23DD500F006A9B5A /* Frameworks */,
 				FA5EF3CC23DD500F006A9B5A /* Resources */,
+				11B6222D9A2C49BD03EBF213 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5EF3F023DD53D3006A9B5A /* .gitignore in Resources */,
 				FA5EF3DE23DD5012006A9B5A /* LaunchScreen.storyboard in Resources */,
 				FA5EF3DB23DD5012006A9B5A /* Assets.xcassets in Resources */,
 				FA5EF3D923DD500F006A9B5A /* Main.storyboard in Resources */,
@@ -133,14 +218,58 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		11B6222D9A2C49BD03EBF213 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-testTaskZennex/Pods-testTaskZennex-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-testTaskZennex/Pods-testTaskZennex-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-testTaskZennex/Pods-testTaskZennex-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4AD0850BBC45BF8DEC70341 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-testTaskZennex-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FA5EF3CA23DD500F006A9B5A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA5EF3D623DD500F006A9B5A /* ViewController.swift in Sources */,
+				FA5EF3D623DD500F006A9B5A /* MainViewController.swift in Sources */,
 				FA5EF3D223DD500F006A9B5A /* AppDelegate.swift in Sources */,
+				FA5EF3EC23DD5246006A9B5A /* StaffTableViewCell.swift in Sources */,
 				FA5EF3D423DD500F006A9B5A /* SceneDelegate.swift in Sources */,
+				FA5EF3EE23DD52D8006A9B5A /* WorkersModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +411,7 @@
 		};
 		FA5EF3E323DD5012006A9B5A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD577F9F24551842A9F3B45 /* Pods-testTaskZennex.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +430,7 @@
 		};
 		FA5EF3E423DD5012006A9B5A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C48CE78BBD6871D6358DF534 /* Pods-testTaskZennex.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
