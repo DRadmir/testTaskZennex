@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class NewWorkerViewController: UIViewController {
     
-    var currentWorkers: Workers!
+    var currentWorker: Workers?
     private var type = "boss"
     private var typeAccountant = "salary"
+    var id: Int?
     
     @IBOutlet weak var workersSegmentedControl: UISegmentedControl!
     @IBOutlet weak var typeAccountantSegmentedControl: UISegmentedControl!
@@ -34,6 +36,8 @@ class NewWorkerViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         bossInterfaceSetting()
+        loadUserData()
+        print(currentWorker?.id)
     }
     
     @IBAction func saveWorkersTapped(_ sender: Any) {
@@ -78,6 +82,7 @@ class NewWorkerViewController: UIViewController {
                 showAlert(title: "Warning", message: "all fields must be filled")
                 
             } else {
+                
                 saveWorker(type: type,
                            name: nameTF.text!,
                            surname: surnameTF.text!,
@@ -141,7 +146,9 @@ class NewWorkerViewController: UIViewController {
     }
     
     private func saveWorker(type: String, name: String, surname: String, patronymic: String, salary: Int, businessHuors: String?, lunchTime: String?, accountant: String?, workplace: String?) {
-        let newWorker = Workers(type: type,
+        let id = incrementID()
+        let newWorker = Workers(id: id,
+                                type: type,
                                 name: name,
                                 surname: surname,
                                 patronymic: patronymic,
@@ -150,17 +157,18 @@ class NewWorkerViewController: UIViewController {
                                 lunchTime: lunchTime,
                                 accountant: accountant,
                                 workplace: workplace)
-        if self.currentWorkers != nil {
+        if self.currentWorker != nil {
             try! realm.write {
-                currentWorkers.type = newWorker.type
-                currentWorkers.name = newWorker.name
-                currentWorkers.surname = newWorker.surname
-                currentWorkers.patronymic = newWorker.patronymic
-                currentWorkers.salary = newWorker.salary
-                currentWorkers.businessHours = newWorker.businessHours
-                currentWorkers.lunchTime = newWorker.lunchTime
-                currentWorkers.accountant = newWorker.accountant
-                currentWorkers.workplace = newWorker.workplace
+                currentWorker?.type = newWorker.type
+                currentWorker?.name = newWorker.name
+                currentWorker?.surname = newWorker.surname
+                currentWorker?.patronymic = newWorker.patronymic
+                currentWorker?.salary = newWorker.salary
+                currentWorker?.businessHours = newWorker.businessHours
+                currentWorker?.lunchTime = newWorker.lunchTime
+                currentWorker?.accountant = newWorker.accountant
+                currentWorker?.workplace = newWorker.workplace
+
             }
         } else {
             StorageManager.saveObject(newWorker)
@@ -189,6 +197,58 @@ class NewWorkerViewController: UIViewController {
         bussinessHoursStackView.isHidden = true
         lunchTimeStackView.isHidden = false
         self.type = "accountant"
+    }
+    
+    private func setupEditScreen() {
+        if currentWorker != nil {
+            
+            switch currentWorker?.type {
+            case "boss":
+                workersSegmentedControl.selectedSegmentIndex = 0
+                bossInterfaceSetting()
+            case "staff":
+                 workersSegmentedControl.selectedSegmentIndex = 1
+                staffInterfaceSetting()
+            case "accountant":
+                 workersSegmentedControl.selectedSegmentIndex = 2
+                accountantInterfaceSetting()
+            default:
+                break
+            }
+            
+            switch currentWorker?.type {
+            case "accounting":
+                typeAccountantSegmentedControl.selectedSegmentIndex = 0
+            case "salary":
+                typeAccountantSegmentedControl.selectedSegmentIndex = 1
+            default:
+                break
+            }
+            
+            
+            nameTF.text = currentWorker?.name
+            surnameTF.text = currentWorker?.surname
+            patronymicTF.text = currentWorker?.patronymic
+            guard let salary = currentWorker?.salary else { return }
+            salaryTF.text = "\(salary)"
+            numberWorkplaceTF.text = currentWorker?.workplace
+            bussinessHoursTF.text = currentWorker?.businessHours
+            lunchTimeTF.text = currentWorker?.lunchTime
+            
+        }
+    }
+    
+    private func loadUserData() {
+        let realm = try! Realm()
+        if id != nil {
+            self.currentWorker = realm.objects(Workers.self).filter("id == \(self.id!)").first
+            setupEditScreen()
+        }
+    }
+    
+    func incrementID() -> Int {
+        let realm = try! Realm()
+        return (realm.objects(Workers.self).max(ofProperty: "id") as Int? ?? 0) + 1
     }
     
     private func showAlert(title: String, message: String) {

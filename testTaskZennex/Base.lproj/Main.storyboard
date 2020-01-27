@@ -123,6 +123,7 @@
                                             <outlet property="lunchOrTypeLabel" destination="S60-Pm-8eE" id="ldg-As-xPZ"/>
                                             <outlet property="numberWorkplaceLabel" destination="YPA-nO-Gng" id="9TX-bS-tR0"/>
                                             <outlet property="salaryLabel" destination="Qqf-Xw-rXb" id="ZIU-ha-hkP"/>
+                                            <segue destination="aEx-lS-N6l" kind="show" identifier="showDetail" id="dEy-5F-pDc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -142,14 +143,22 @@
                         <viewLayoutGuide key="safeArea" id="OEf-uN-Ngc"/>
                     </view>
                     <navigationItem key="navigationItem" id="SCR-Cg-kvy">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="DPn-3F-cEE"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="DPn-3F-cEE">
+                            <connections>
+                                <action selector="editTapped:" destination="6qs-of-5WW" id="bKT-QD-sWO"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="5IP-Ho-cU7">
                                 <connections>
-                                    <segue destination="aEx-lS-N6l" kind="show" id="dOx-3q-Slw"/>
+                                    <segue destination="aEx-lS-N6l" kind="show" id="Z4K-v1-8Wu"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" id="jDm-yO-1xm"/>
+                            <barButtonItem title="Item" id="jDm-yO-1xm">
+                                <connections>
+                                    <action selector="sortedTapped:" destination="6qs-of-5WW" id="GV7-ct-SWB"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -393,7 +402,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7QA-QK-YVS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1208.8" y="-219.04047976011995"/>
+            <point key="canvasLocation" x="1528" y="-218"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="LOG-fv-TL9">
@@ -438,4 +447,7 @@
         <image name="person" width="85.333335876464844" height="85.333335876464844"/>
         <image name="staff" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dEy-5F-pDc"/>
+    </inferredMetricsTieBreakers>
 </document>

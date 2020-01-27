@@ -23,7 +23,7 @@ class StaffTableViewCell: UITableViewCell {
     @IBOutlet weak var lunchOrTypeLabel: UILabel!
     
 
-    func getBossData(data: Workers) {
+    func settingCell(data: Workers) {
         
         switch data.type {
         case "boss":

@@ -15,16 +15,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var sectionNames: [String] {
         return Set(workers.value(forKeyPath: "type") as! [String]).sorted()
     }
-
-
+    
     @IBOutlet weak var tableView: UITableView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-//        workers = realm.objects(Workers.self)
     }
+    
+ 
+    @IBAction func editTapped(_ sender: Any) {
+    }
+    @IBAction func sortedTapped(_ sender: Any) {
+    }
+
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionNames.count
@@ -47,14 +53,26 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StaffTableViewCell
         
         let info = workers.filter("type == %@", sectionNames[indexPath.section])[indexPath.row]
-        cell.getBossData(data: info)
+        cell.settingCell(data: info)
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "showDetail" {
+
+            guard let indexPath = tableView.indexPathForSelectedRow else {return}
+
+            let info = workers.filter("type == %@", sectionNames[indexPath.section])[indexPath.row]
+            let id = info.id
+
+            let newWorkerVC = segue.destination as! NewWorkerViewController
+            newWorkerVC.id = id
+        }
     }
+    
+
 
 }
 
