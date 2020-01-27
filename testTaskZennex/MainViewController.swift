@@ -15,14 +15,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var sectionNames: [String] {
         return Set(workers.value(forKeyPath: "type") as! [String]).sorted()
     }
-    
-    
-//    private var workersSectionTitles: [String] {
-//        return Set(workers.value(forKeyPath: "type")
-//    }
-    
 
-//    private var workers: Results<Workers>!
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -56,9 +49,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let info = workers.filter("type == %@", sectionNames[indexPath.section])[indexPath.row]
         cell.getBossData(data: info)
         
-//        cell.fioLabel?.text = workers.filter("name == %@", sectionNames[indexPath.section])[indexPath.row].name
-        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        <#code#>
     }
 
 }
