@@ -82,6 +82,7 @@
 		FA5EF3D023DD500F006A9B5A /* testTaskZennex */ = {
 			isa = PBXGroup;
 			children = (
+				FA5EF3F623E09A90006A9B5A /* Galery */,
 				FA5EF3E523DD502C006A9B5A /* Staff */,
 				FA5EF3E623DD5057006A9B5A /* SuppotrFiles */,
 				FA5EF3E723DD506A006A9B5A /* iBulder */,
@@ -152,6 +153,13 @@
 				FA5EF3F423DD86B0006A9B5A /* StorageManager.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FA5EF3F623E09A90006A9B5A /* Galery */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Galery;
 			sourceTree = "<group>";
 		};
 		FE6FDBE49231A13875E79C8A /* Frameworks */ = {
