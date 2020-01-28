@@ -37,13 +37,19 @@ class NewWorkerViewController: UIViewController {
         // Do any additional setup after loading the view.
         bossInterfaceSetting()
         loadUserData()
-        print(currentWorker?.id)
+//        print(currentWorker?.id)
     }
     
-    @IBAction func saveWorkersTapped(_ sender: Any) {
-        saveWorkers()
-    }
+//    @IBAction func saveWorkersTapped(_ sender: Any) {
+//        saveWorkers()
+//        navigationController?.popViewController(animated: true)
+//        dismiss(animated: true, completion: nil)
+//    }
 
+    @IBAction func cancelTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func workersSegmentedValueChanged(_ sender: Any) {
 
         switch workersSegmentedControl.selectedSegmentIndex {
@@ -69,7 +75,7 @@ class NewWorkerViewController: UIViewController {
         }
     }
     
-    private func saveWorkers() {
+    func saveWorkers() {
         
         switch workersSegmentedControl.selectedSegmentIndex {
         case 0:
@@ -141,8 +147,6 @@ class NewWorkerViewController: UIViewController {
             break
         }
         
-        self.dismiss(animated: true, completion: nil)
-        
     }
     
     private func saveWorker(type: String, name: String, surname: String, patronymic: String, salary: Int, businessHuors: String?, lunchTime: String?, accountant: String?, workplace: String?) {
@@ -201,6 +205,8 @@ class NewWorkerViewController: UIViewController {
     
     private func setupEditScreen() {
         if currentWorker != nil {
+            
+            navigationItem.leftBarButtonItem = nil
             
             switch currentWorker?.type {
             case "boss":

@@ -123,7 +123,7 @@
                                             <outlet property="lunchOrTypeLabel" destination="S60-Pm-8eE" id="ldg-As-xPZ"/>
                                             <outlet property="numberWorkplaceLabel" destination="YPA-nO-Gng" id="9TX-bS-tR0"/>
                                             <outlet property="salaryLabel" destination="Qqf-Xw-rXb" id="ZIU-ha-hkP"/>
-                                            <segue destination="aEx-lS-N6l" kind="show" identifier="showDetail" id="dEy-5F-pDc"/>
+                                            <segue destination="aEx-lS-N6l" kind="show" identifier="showDetail" id="QNk-aj-4zz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -151,17 +151,18 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="5IP-Ho-cU7">
                                 <connections>
-                                    <segue destination="aEx-lS-N6l" kind="show" id="Z4K-v1-8Wu"/>
+                                    <segue destination="SA0-Zr-l0T" kind="presentation" id="dKr-Hd-fTs"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" id="jDm-yO-1xm">
+                            <barButtonItem title="Item" image="AZ" id="jDm-yO-1xm">
                                 <connections>
-                                    <action selector="sortedTapped:" destination="6qs-of-5WW" id="GV7-ct-SWB"/>
+                                    <action selector="sortedTapped:" destination="6qs-of-5WW" id="hlh-2j-c7M"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="sortingButton" destination="jDm-yO-1xm" id="sQg-q1-6LS"/>
                         <outlet property="tableView" destination="YNZ-zQ-YfK" id="k7b-OA-lnP"/>
                     </connections>
                 </viewController>
@@ -379,9 +380,14 @@
                         <viewLayoutGuide key="safeArea" id="Qha-SX-dus"/>
                     </view>
                     <navigationItem key="navigationItem" title="New worker" id="f4O-Gf-kLS">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="V57-TS-B99">
+                            <connections>
+                                <action selector="cancelTapped:" destination="aEx-lS-N6l" id="B6m-Jp-P0R"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="fB6-rq-kcW">
                             <connections>
-                                <action selector="saveWorkersTapped:" destination="aEx-lS-N6l" id="Xr6-GI-evP"/>
+                                <segue destination="wPS-oD-wDn" kind="unwind" unwindAction="unwindSegueWithSegue:" id="sPt-vS-WmN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -401,8 +407,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7QA-QK-YVS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="wPS-oD-wDn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1528" y="-218"/>
+            <point key="canvasLocation" x="1283" y="-218"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="LOG-fv-TL9">
@@ -442,12 +449,31 @@
             </objects>
             <point key="canvasLocation" x="-465.21739130434787" y="-217.63392857142856"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OWE-B0-Xis">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SA0-Zr-l0T" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VXV-7r-Nww">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aEx-lS-N6l" kind="relationship" relationship="rootViewController" id="HNP-3V-NM4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E4m-ZX-PiQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1283" y="-956"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="AZ" width="25" height="24"/>
         <image name="person" width="85.333335876464844" height="85.333335876464844"/>
         <image name="staff" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dEy-5F-pDc"/>
+        <segue reference="QNk-aj-4zz"/>
     </inferredMetricsTieBreakers>
 </document>
