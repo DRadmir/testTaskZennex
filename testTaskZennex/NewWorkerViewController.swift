@@ -34,10 +34,9 @@ class NewWorkerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         bossInterfaceSetting()
         loadUserData()
-//        print(currentWorker?.id)
     }
 
 
@@ -70,8 +69,9 @@ class NewWorkerViewController: UIViewController {
         }
     }
     
+    //MARK: - Custom func
+    //save
     func saveWorkers() {
-        
         switch workersSegmentedControl.selectedSegmentIndex {
         case 0:
             if nameTF.text == "" ||
@@ -168,13 +168,13 @@ class NewWorkerViewController: UIViewController {
                 currentWorker?.lunchTime = newWorker.lunchTime
                 currentWorker?.accountant = newWorker.accountant
                 currentWorker?.workplace = newWorker.workplace
-
             }
         } else {
             StorageManager.saveObject(newWorker)
         }
     }
     
+    //interface
     private func bossInterfaceSetting() {
         typeAccountantSegmentedControl.isHidden = true
         numberWorkplaceStackView.isHidden = true
@@ -227,7 +227,6 @@ class NewWorkerViewController: UIViewController {
                 break
             }
             
-            
             nameTF.text = currentWorker?.name
             surnameTF.text = currentWorker?.surname
             patronymicTF.text = currentWorker?.patronymic
@@ -239,7 +238,7 @@ class NewWorkerViewController: UIViewController {
             
         }
     }
-    
+    //load current user
     private func loadUserData() {
         let realm = try! Realm()
         if id != nil {
@@ -247,8 +246,8 @@ class NewWorkerViewController: UIViewController {
             setupEditScreen()
         }
     }
-    
-    func incrementID() -> Int {
+    //helpers func
+    private func incrementID() -> Int {
         let realm = try! Realm()
         return (realm.objects(Workers.self).max(ofProperty: "id") as Int? ?? 0) + 1
     }
@@ -261,14 +260,5 @@ class NewWorkerViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
