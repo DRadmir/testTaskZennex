@@ -152,6 +152,7 @@ class NewWorkerViewController: UIViewController {
     private func saveWorker(type: String, name: String, surname: String, patronymic: String, salary: Int, businessHuors: String?, lunchTime: String?, accountant: String?, workplace: String?) {
         let id = incrementID()
         let newWorker = Workers(id: id,
+                                order: id,
                                 type: type,
                                 name: name,
                                 surname: surname,

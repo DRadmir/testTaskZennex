@@ -11,7 +11,7 @@ import RealmSwift
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    private var workers = try! Realm().objects(Workers.self).sorted(by: (["type", "name"]))
+    private var workers = try! Realm().objects(Workers.self).sorted(by: (["order"]))
     private var sectionNames: [String] {
         return Set(workers.value(forKeyPath: "type") as! [String]).sorted()
     }
@@ -23,7 +23,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -32,6 +32,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
  
     @IBAction func editTapped(_ sender: Any) {
+        self.tableView.isEditing = !self.tableView.isEditing
     }
     
     @IBAction func sortedTapped(_ sender: Any) {
@@ -101,8 +102,56 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.settingCell(data: info)
         
         return cell
-
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    //MARK: - editing
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: animated)
+    }
+
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        try! realm.write {
+            let sourceObject = workers.filter("type == %@", sectionNames[sourceIndexPath.section])[sourceIndexPath.row]
+            let destinationObject = workers.filter("type == %@", sectionNames[sourceIndexPath.section])[destinationIndexPath.row]
+            
+            let destinationObjectOrder = destinationObject.order
+            
+            if sourceIndexPath.row < destinationIndexPath.row {
+                
+                for index in sourceIndexPath.row...destinationIndexPath.row {
+                    let object = workers[index]
+                    object.order -= 1
+                }
+            } else {
+                
+                for index in (destinationIndexPath.row..<sourceIndexPath.row).reversed() {
+                    let object = workers[index]
+                    object.order += 1
+                }
+            }
+            
+            sourceObject.order = destinationObjectOrder
+        }
+    }
+    
+    
     
 }
 
