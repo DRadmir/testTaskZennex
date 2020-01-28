@@ -39,12 +39,7 @@ class NewWorkerViewController: UIViewController {
         loadUserData()
 //        print(currentWorker?.id)
     }
-    
-//    @IBAction func saveWorkersTapped(_ sender: Any) {
-//        saveWorkers()
-//        navigationController?.popViewController(animated: true)
-//        dismiss(animated: true, completion: nil)
-//    }
+
 
     @IBAction func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)

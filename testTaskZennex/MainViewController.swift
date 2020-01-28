@@ -19,12 +19,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var sortingButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
@@ -55,12 +49,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     //MARK:- custom func
-    func sorting() {
+    private func sorting() {
         workers = workers.sorted(byKeyPath: "surname", ascending: ascedningSorting)
         ascedningSorting.toggle()
         tableView.reloadData()
     }
     
+    //MARK- Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if segue.identifier == "showDetail" {
@@ -109,6 +104,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //MARK: - editing
+    //delite
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: animated)
@@ -127,12 +123,26 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
+    //move
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return false
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        let sourceSection = sourceIndexPath.section
+        let destSection = proposedDestinationIndexPath.section
+        
+        if destSection < sourceSection {
+            return IndexPath(row: 0, section: sourceSection)
+        } else if destSection > sourceSection {
+            return IndexPath(row: self.tableView(tableView, numberOfRowsInSection:sourceSection)-1, section: sourceSection)
+        }
+        
+        return proposedDestinationIndexPath
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -145,13 +155,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if sourceIndexPath.row < destinationIndexPath.row {
                 
                 for index in sourceIndexPath.row...destinationIndexPath.row {
-                    let object = workers[index]
+                    let object = workers.filter("type == %@", sectionNames[sourceIndexPath.section])[index]
                     object.order -= 1
                 }
             } else {
                 
                 for index in (destinationIndexPath.row..<sourceIndexPath.row).reversed() {
-                    let object = workers[index]
+                    let object = workers.filter("type == %@", sectionNames[sourceIndexPath.section])[index]
                     object.order += 1
                 }
             }
@@ -159,7 +169,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             sourceObject.order = destinationObjectOrder
         }
     }
-    
     
     
 }

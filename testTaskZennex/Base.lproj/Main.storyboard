@@ -198,7 +198,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="8SW-wi-auW">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCC-l2-aTD">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCC-l2-aTD">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="18"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -217,7 +217,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="lyK-j5-Ebi">
                                         <rect key="frame" x="0.0" y="57" width="382" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Kv-mO-ydl">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Kv-mO-ydl">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="18"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -349,18 +349,27 @@
                                 </subviews>
                             </stackView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TYr-6s-2IP">
-                                <rect key="frame" x="267" y="550" width="131" height="31"/>
+                                <rect key="frame" x="219" y="550" width="179" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="pST-2e-pCp"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Salary"/>
+                                    <segment title="Accounting"/>
                                 </segments>
                                 <connections>
                                     <action selector="typeAccountantSegmentedControlValueChanged:" destination="aEx-lS-N6l" eventType="valueChanged" id="QAq-UR-lcX"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accountant type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZR-Lf-64D">
+                                <rect key="frame" x="20" y="555" width="239" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="tNC-QB-2y3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -368,7 +377,10 @@
                             <constraint firstItem="PDE-aA-rVB" firstAttribute="top" secondItem="kz8-v0-qBU" secondAttribute="bottom" constant="8" id="C0M-sD-1eq"/>
                             <constraint firstItem="Qha-SX-dus" firstAttribute="trailing" secondItem="kz8-v0-qBU" secondAttribute="trailing" constant="16" id="DV3-vX-kNT"/>
                             <constraint firstItem="oRV-aq-1X2" firstAttribute="leading" secondItem="Qha-SX-dus" secondAttribute="leading" id="EcO-9i-hS4"/>
+                            <constraint firstItem="7ZR-Lf-64D" firstAttribute="top" secondItem="PDE-aA-rVB" secondAttribute="bottom" constant="24" id="G7b-Jc-Eo0"/>
                             <constraint firstItem="kz8-v0-qBU" firstAttribute="leading" secondItem="Qha-SX-dus" secondAttribute="leading" constant="16" id="IPo-RE-hBe"/>
+                            <constraint firstItem="Qha-SX-dus" firstAttribute="trailing" secondItem="7ZR-Lf-64D" secondAttribute="trailing" constant="155" id="RQj-vV-RTU"/>
+                            <constraint firstItem="7ZR-Lf-64D" firstAttribute="leading" secondItem="Qha-SX-dus" secondAttribute="leading" constant="20" id="cbT-Cp-5WU"/>
                             <constraint firstItem="TYr-6s-2IP" firstAttribute="top" secondItem="PDE-aA-rVB" secondAttribute="bottom" constant="19" id="dcA-MC-xZz"/>
                             <constraint firstItem="Qha-SX-dus" firstAttribute="trailing" secondItem="PDE-aA-rVB" secondAttribute="trailing" constant="16" id="iLt-Bm-Ca3"/>
                             <constraint firstItem="TYr-6s-2IP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qha-SX-dus" secondAttribute="leading" symbolic="YES" id="nno-V4-Ug2"/>
@@ -409,7 +421,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7QA-QK-YVS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="wPS-oD-wDn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1283" y="-218"/>
+            <point key="canvasLocation" x="1282.608695652174" y="-218.30357142857142"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="LOG-fv-TL9">
