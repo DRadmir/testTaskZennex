@@ -13,9 +13,27 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var galleryCollectionView: UICollectionView!
     
     @IBAction func forwardTapped(_ sender: Any) {
+        
+        let visibleItems: NSArray = self.galleryCollectionView.indexPathsForVisibleItems as NSArray
+        let currentItem: IndexPath = visibleItems.object(at: 0) as! IndexPath
+        let nextItem: IndexPath = IndexPath(item: currentItem.item + 1, section: 0)
+        if nextItem.row < galleryCollectionView.numberOfItems(inSection: nextItem.section) {
+            self.galleryCollectionView.scrollToItem(at: nextItem, at: .left, animated: true)
+            
+        }
+        
     }
     
     @IBAction func backTapped(_ sender: Any) {
+        
+        let visibleItems: NSArray = self.galleryCollectionView.indexPathsForVisibleItems as NSArray
+        let currentItem: IndexPath = visibleItems.object(at: 0) as! IndexPath
+        let nextItem: IndexPath = IndexPath(item: currentItem.item - 1, section: 0)
+        if nextItem.row >= 0{
+            self.galleryCollectionView.scrollToItem(at: nextItem, at: .right, animated: true)
+
+        }
+        
     }
     
     
